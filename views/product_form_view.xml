@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="product_form_inherit_view">
+        <field name="name">product.template.form.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='categ_id']" position="after">
+                <field name="adamsaat">Adam/Saat</field>
+                <field name="liste_fiyat" groups="base.group_system" >Liste Fiyatı</field>
+            </xpath>
+
+        </field>
+    </record>
+
+
+
+
+    <record model="ir.ui.view" id="sale_order_line_adamsaatr">
+        <field name="name">sale.order.line.adamsaat.view.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/tree//field[@name='price_subtotal']" position="before">
+                <field name="adamsaat_subtotal" string="Ürün Adam/Saat"  widget='monetary'  groups="base.group_user" optional="hide" />
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="sale_adamsaat_sale_order">
+        <field name="name">sale.order.adamsaat.view.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_margin.sale_margin_sale_order"/>
+        <field name="arch" type="xml">
+		<xpath expr="//field[@name='date_order']" position="after">
+                	<field name="adamsaat_maliyet" string="Adam/Saat Birim Maliyet €" />
+			<field name="proje_adi" string="Proje Başlığı" />
+                </xpath>
+
+            <xpath expr="//div[@class='text-nowrap']" position="after">
+
+<div class="table-responsive" style="width:250%;position: relative;left: 50px">
+  <table class="table">
+
+  <tbody>
+    <tr>
+
+      <td> Adam/Saat Maliyet:</td>
+      <td><field name="toplam_adamsaat" nolabel="1" widget='monetary'  /></td>
+
+    </tr>
+    <tr>
+
+      <td> Malzeme Kar:</td>
+      <td><field name="malzeme_margin"  widget='monetary'  nolabel="1" /></td>
+
+    </tr>
+
+    <tr>
+
+        <td> Malzeme Maliyet:</td>
+        <td><field name="malzeme_maliyet"  widget='monetary'  nolabel="1" /></td>
+
+    </tr>
+
+
+  </tbody>
+</table>
+</div>
+
+
+<!--                <div  style="position: relative;-->
+<!--  left: 50px;-->
+<!--  border: 3px solid #73AD21;">-->
+<!--                    <div class="text-nowrap " groups="base.group_user">-->
+<!--                    &lt;!&ndash;                <field name="toplam_adamsaat" class="oe_block" nolabel="1" widget='monetary'  />&ndash;&gt;-->
+<!--                    <span  >-->
+<!--                        Adam/Saat Maliyet:  <field name="toplam_adamsaat" nolabel="1" widget='monetary'  />-->
+<!--                    </span>-->
+<!--                </div>-->
+<!--                <br />-->
+
+<!--                <div class="text-nowrap" groups="base.group_user">-->
+<!--                    &lt;!&ndash;                <field name="malzeme_margin"  class="oe_inline" widget='monetary'  nolabel="1" />&ndash;&gt;-->
+<!--                    <span>-->
+<!--                        Malzeme Kar: <field name="malzeme_margin"  widget='monetary'  nolabel="1" />-->
+<!--                    </span>-->
+<!--                </div>-->
+<!--                </div>-->
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

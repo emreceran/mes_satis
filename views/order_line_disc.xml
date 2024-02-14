@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record model="ir.ui.view" id="sale_order_line_customstd_form">
+        <field name="name">sale.order.line.tree.customstd.view.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="after">
+                 <field name="std_price" string="Maliyet" />
+                 <field name="cost_discount" string="Proje İndirim Oranı"  widget="percentage"  />
+                <field name="purchase_price" string="İndirimli Maliyet" />
+                <field name="birim_kar" string="Birim Kar" />
+                <field name="margin_percent" string="Kar Yüzde"  widget="percentage"   />
+                <field name="price_unit" string="Birim Fiyat"     />
+
+            </xpath>
+        </field>
+    </record>
+
+<record model="ir.ui.view" id="sale_margin_line_customstd_form">
+        <field name="name">sale.margin.line.tree.customstd.view.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line_form"/>
+        <field name="arch" type="xml">
+
+                        <xpath expr="//field[@name='purchase_price']" pposition="attributes">
+                            <attribute name="invisible">1</attribute>
+                        </xpath>
+                        <xpath expr="//field[@name='margin']" pposition="attributes">
+                            <attribute name="invisible">1</attribute>
+                        </xpath>
+
+                        <xpath expr="//field[@name='margin_percent']" pposition="attributes">
+                            <attribute name="invisible">1</attribute>
+                        </xpath>
+        </field>
+    </record>
+
+</odoo>
