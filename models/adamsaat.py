@@ -55,7 +55,7 @@ class SaleOrder(models.Model):
             toplam = 0
             for line in rec.order_line:
                 toplam += line.adamsaat_subtotal
-            rec.toplam_adamsaat = toplam * rec.adamsaat_maliyet
+            rec.toplam_adamsaat = toplam
 
 
 
@@ -80,4 +80,5 @@ class SaleOrderLine(models.Model):
         Compute the amounts of the SO line.
         """
         for line in self:
-            line.adamsaat_subtotal = line.product_uom_qty * line.adamsaat * self.order_id.adamsaat_maliyet		
+            # line.adamsaat_subtotal = line.product_uom_qty * line.adamsaat
+            line.adamsaat_subtotal = line.product_uom_qty * line.adamsaat * line.order_id.adamsaat_maliyet
