@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "mes_satis",
+    'name': "mes_satis_v1",
 
     'summary': """
         Her ürüne bir adam saat değeri eklenir ve sale order satırlarında ve teklif
