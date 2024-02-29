@@ -37,6 +37,7 @@
         'views/templates.xml',
         'views/product_form_view.xml',
         'views/order_line_disc.xml',
+        'views/margin.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

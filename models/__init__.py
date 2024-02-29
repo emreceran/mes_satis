@@ -6,3 +6,4 @@ from . import costdiscount
 from . import fatura
 from . import converter
 from . import sale_margin
+from . import kredikart

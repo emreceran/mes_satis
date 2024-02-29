@@ -16,13 +16,14 @@
             </xpath>
 
             <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="after">
-                <field name="adamsaat" string="Birim Adam/saat"   />
-                <field name="adamsaat_subtotal" string="Toplam Adam/saat"  widget='monetary' />
+                <field name="adamsaat" string="Birim Adam/saat" optional="hide"  />
+                <field name="adamsaat_subtotal" string="Toplam Adam/saat"  optional="show" widget='monetary' />
             </xpath>
 
             <xpath expr="//field[@name='order_line']/tree//field[@name='tax_id']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+
 
             <xpath expr="//field[@name='order_line']/tree//field[@name='discount']" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -31,23 +32,5 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="sale_margin_line_customstd_form">
-        <field name="name">sale.margin.line.tree.customstd.view.form</field>
-        <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line_form"/>
-        <field name="arch" type="xml">
-
-            <xpath expr="//field[@name='purchase_price']" pposition="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath expr="//field[@name='margin']" pposition="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-
-            <xpath expr="//field[@name='margin_percent']" pposition="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-        </field>
-    </record>
 
 </odoo>
